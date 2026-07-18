@@ -1,0 +1,27 @@
+@startuml architecture
+!include <C4/C4_Container>
+
+Person(user, "Usuário", "Faz perguntas em linguagem natural")
+
+System_Boundary(assistant, "Mini-Assistente Conversacional") {
+  Container(ui, "Streamlit UI", "Python/Streamlit", "Chat com streaming e painel de debug/logs")
+  Container(graph, "LangGraph Orchestrator", "Python/LangGraph", "UserNode -> PlannerNode -> ExecutorNode -> MemoryNode")
+  Container(agents, "Agentes Especializados", "LangChain", "WebSearchAgent, RagAgent, SqlAgent, WeatherAgent")
+  ContainerDb(chroma, "Chroma", "Vector DB", "Embeddings de docs/FAQs")
+  ContainerDb(postgres, "PostgreSQL", "SQL DB", "clientes, pedidos")
+}
+
+System_Ext(openai, "Azure OpenAI", "Chat + Embeddings")
+System_Ext(tavily, "Tavily API", "Busca na web")
+System_Ext(openmeteo, "Open-Meteo API", "Previsão do tempo")
+
+Rel(user, ui, "Envia pergunta / recebe resposta em streaming")
+Rel(ui, graph, "invoke(question)")
+Rel(graph, agents, "despacha para o agente roteado")
+Rel(agents, chroma, "similarity_search")
+Rel(agents, postgres, "SELECT (sqlglot-safe)")
+Rel(agents, openai, "chat completions / embeddings")
+Rel(agents, tavily, "busca web")
+Rel(agents, openmeteo, "geocoding + forecast")
+
+@enduml

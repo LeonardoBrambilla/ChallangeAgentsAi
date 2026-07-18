@@ -1,0 +1,55 @@
+@startmindmap project_structure
+* Mini-Assistente Conversacional (raiz)
+** agents/
+*** planner_agent.py <i>(roteador multi-agent)</i>
+*** rag_agent.py
+*** sql_agent.py
+*** weather_agent.py
+*** web_search_agent.py
+** graph/
+*** state.py <i>(GraphState)</i>
+*** nodes.py <i>(UserNode, PlannerNode, ExecutorNode, MemoryNode)</i>
+*** build_graph.py <i>(StateGraph + fallback edge)</i>
+** tools/
+*** web_search_tool.py <i>(Tavily)</i>
+*** vector_search_tool.py <i>(similarity search)</i>
+*** sql_tool.py <i>(sqlglot-safe)</i>
+*** weather_tool.py <i>(Open-Meteo)</i>
+** vector_db/
+*** store_factory.py <i>(Chroma / Azure AI Search)</i>
+*** ingest.py
+*** documents/ <i>(FAQs/políticas de exemplo)</i>
+** ui/
+*** streamlit_app.py <i>(chat streaming + painel de logs)</i>
+** tests/
+*** test_web_search_tool.py
+*** test_vector_search_tool.py
+*** test_sql_tool.py
+*** test_weather_tool.py
+*** test_e2e_chat_flow.py
+** eval/ <i>(bônus: prompt-eval)</i>
+*** dataset.json
+*** run_eval.py <i>(ragas)</i>
+** foundry/ <i>(bônus: Azure AI Foundry, opcional)</i>
+*** tool_specs.py
+*** agent_functions.py
+*** provision_agent.py
+*** run_foundry_agent.py
+** docs/
+*** architecture.puml / .png <i>(C4)</i>
+*** project_structure.puml / .png <i>(este diagrama)</i>
+
+left side
+
+* Mini-Assistente Conversacional (raiz)
+** settings.py <i>(pydantic-settings, lê .env)</i>
+** logging_config.py <i>(logs JSON)</i>
+** llm_factory.py <i>(Azure OpenAI chat/embeddings)</i>
+** rate_limiter.py <i>(compartilhado weather + web search)</i>
+** Dockerfile
+** docker-compose.yml <i>(app + postgres + chroma)</i>
+** requirements.txt
+** .env.example
+** init.sql / init_mssql.sql <i>(seed Postgres / Azure SQL)</i>
+** README.md
+@endmindmap

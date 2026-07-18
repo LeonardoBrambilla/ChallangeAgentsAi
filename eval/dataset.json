@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Qual o prazo para reembolso de um pedido?",
+    "ground_truth": "O reembolso integral é possível em até 7 dias corridos após a compra, desde que o produto não tenha sido utilizado. Após esse prazo só é possível trocar por outro produto de valor igual ou superior."
+  },
+  {
+    "question": "Posso cancelar um pedido que já foi enviado?",
+    "ground_truth": "Não. Pedidos com status 'processando' podem ser cancelados sem custo, mas após o status mudar para 'enviado' o cancelamento não é mais possível — é preciso aguardar a entrega e solicitar reembolso."
+  },
+  {
+    "question": "Quais formas de pagamento vocês aceitam?",
+    "ground_truth": "Cartão de crédito (até 12x), Pix à vista com 5% de desconto, e boleto bancário (sempre à vista, sem parcelamento)."
+  },
+  {
+    "question": "Como faço para trocar meu e-mail cadastrado?",
+    "ground_truth": "Acesse 'Minha Conta' > 'Dados Pessoais' e atualize o e-mail; um link de confirmação é enviado ao novo endereço."
+  },
+  {
+    "question": "Entregas atrasadas dão algum benefício ao cliente?",
+    "ground_truth": "Sim, atrasos de mais de 3 dias úteis além do prazo estimado dão direito a frete grátis no próximo pedido, mediante solicitação ao suporte."
+  }
+]
