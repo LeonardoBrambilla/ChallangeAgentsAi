@@ -100,7 +100,7 @@ docker run --rm -v "$(pwd)/docs:/docs" plantuml/plantuml -tpng /docs/project_str
 - **Tools com entrada/saída tipada (Pydantic)**: cada tool (`web_search_tool`,
   `vector_search_tool`, `sql_tool`, `weather_tool`) é uma função pura, testável sem subir o
   grafo inteiro nem chamar LLM — os testes unitários mockam apenas a API externa.
-- **Azure OpenAI (deployments `gpt-4o-mini` + `text-embedding-3-small`)**: chat e embeddings
+- **Azure OpenAI (deployments `gpt-5-mini` + `text-embedding-3-small`)**: chat e embeddings
   usados por todos os agentes (planner, RAG, SQL, weather, web search) e pela ingestão vetorial,
   via `AzureChatOpenAI`/`AzureOpenAIEmbeddings` (`llm_factory.py`). Requer um recurso Azure
   OpenAI provisionado com os dois deployments criados (nomes configuráveis via
